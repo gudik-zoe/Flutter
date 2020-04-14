@@ -64,11 +64,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   }
 
   _submit() {
-    
-       
-    if (_formKey.currentState.validate()) {
-      
-
+        if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       print('$_title, $_date, $_priority');
 
@@ -85,13 +81,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
       }
       widget.updateTaskList();
       Navigator.pop(context);
-       
-    } 
-   
-        
-     
-
-    
+    }    
   }
 
   @override
