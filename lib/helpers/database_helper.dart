@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:validation_form/models/task_model.dart';
+import 'package:validation_form/models/form_model.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -12,7 +12,7 @@ class DatabaseHelper {
 
   String tasksTable = 'task_table';
   String colId = 'id';
-  String colTitle = 'title';
+  String colEmail = 'title';
   String colDate = 'date';
   String colPriority = 'priority';
   String colStatus = 'status';
@@ -40,7 +40,7 @@ class DatabaseHelper {
 
   void _createDb(Database db, int version) async {
     await db.execute(
-      'CREATE TABLE $tasksTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colTitle TEXT, $colDate TEXT, $colPriority TEXT, $colStatus INTEGER)',
+      'CREATE TABLE $tasksTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colEmail TEXT, $colDate TEXT, $colPriority TEXT, $colStatus INTEGER)',
     );
   }
 

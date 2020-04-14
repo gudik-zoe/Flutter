@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:validation_form/helpers/database_helper.dart';
-import 'package:validation_form/models/task_model.dart';
-import 'package:validation_form/screens/add_user_screen.dart';
+import 'package:validation_form/models/form_model.dart';
+import 'package:validation_form/screens/add_user.dart';
 import 'package:intl/intl.dart';
 
 class FormValidation extends StatefulWidget {

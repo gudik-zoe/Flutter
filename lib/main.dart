@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'screens/users_list_screen.dart';
+import 'screens/users_list.dart';
 
 void main() => runApp(MyApp());
 
