@@ -34,7 +34,7 @@ class _FormValidationState extends State<FormValidation> {
             title: Text(
               task.title,),
             subtitle: Text(
-              'DateOfBirth: ${_dateFormatter.format(task.date)}' + '\n'+
+              'DateBirth: ${_dateFormatter.format(task.date)}' + '\n'+
               'Password: ${task.priority}',
               // style: TextStyle(
               //   fontSize: 15.0,
