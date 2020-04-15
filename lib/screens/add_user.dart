@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:validation_form/helpers/database_helper.dart';
 import 'package:validation_form/models/form_model.dart';
 import 'package:intl/intl.dart';
@@ -65,9 +66,17 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
   _submit() {
         if (_formKey.currentState.validate()) {
+          Fluttertoast.showToast(
+        msg: "grazie per esserti registrato",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 2,
+        backgroundColor: Colors.black,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
       _formKey.currentState.save();
       print('$_email, $_date, $_password');
-
       Valid task = Valid(email: _email, date: _date, password: _password);
       if (widget.task == null) {
         DatabaseHelper.instance.insertTask(task);
@@ -129,7 +138,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                                return "please enter your Email";
                               }
                               else  if (value.indexOf("@")== -1) {
-                              return ' Enter a valid maile (it should contain @)';
+                              return 'Enter a valid mail(it should contain @)';
                               }
                             return null;
                                },
@@ -191,7 +200,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                               fontSize: 20.0,
                             ),
                           ),
-                          onPressed: _submit,                        
+                          onPressed: _submit, 
+                          onLongPress: (){if(_formKey.currentState.validate()){
+    Scaffold.of(context).showSnackBar(SnackBar(content:Text('grazie per esserti registrato')));
+  }
+                          },                       
                         ),
                       ),
                            Container(
