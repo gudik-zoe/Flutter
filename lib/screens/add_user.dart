@@ -47,7 +47,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     final DateTime date = await showDatePicker(
       context: context,
       initialDate: _date,
-      firstDate: DateTime(1990),
+      firstDate: DateTime(1960),
       lastDate: DateTime(2100),
     );
     if (date != null && date != _date) {
