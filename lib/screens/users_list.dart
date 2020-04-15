@@ -92,19 +92,19 @@ class _FormValidationState extends State<FormValidation> {
             );
           }
 
-          final int completedTaskCount = snapshot.data
-              .where((Task task) => task.status == 1)
-              .toList()
-              .length;
+          // final int completedTaskCount = snapshot.data
+          //     .where((Task task) => task.status == 1)
+          //     .toList()
+          //     .length;
 
           return ListView.builder(
-            padding: EdgeInsets.symmetric(vertical: 80.0),
+            // padding: EdgeInsets.symmetric(vertical: 10.0),
             itemCount: 1 + snapshot.data.length,
             itemBuilder: (BuildContext context, int index) {
               if (index == 0) {
                 return Padding(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+                      EdgeInsets.symmetric(horizontal: 40.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[

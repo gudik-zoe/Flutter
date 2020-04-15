@@ -100,7 +100,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   child: Icon(
                     Icons.arrow_back_ios,
                     size: 30.0,
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.black,
                   ),
                 ),
                 SizedBox(height: 20.0),
@@ -181,54 +181,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           ),
                         ),
                       ),
-                     
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(vertical: 20.0),
-                      //   child: DropdownButtonFormField(
-                      //     isDense: true,
-                      //     icon: Icon(Icons.arrow_drop_down_circle),
-                      //     iconSize: 22.0,
-                      //     iconEnabledColor: Theme.of(context).primaryColor,
-                      //     items: _priorities.map((String priority) {
-                      //       return DropdownMenuItem(
-                      //         value: priority,
-                      //         child: Text(
-                      //           priority,
-                      //           style: TextStyle(
-                      //             color: Colors.black,
-                      //             fontSize: 18.0,
-                      //           ),
-                      //         ),
-                      //       );
-                      //     }).toList(),
-                      //     style: TextStyle(fontSize: 18.0),
-                      //     decoration: InputDecoration(
-                      //       labelText: 'Priority',
-                      //       labelStyle: TextStyle(fontSize: 18.0),
-                      //       border: OutlineInputBorder(
-                      //         borderRadius: BorderRadius.circular(10.0),
-                      //       ),
-                      //     ),
-                      //     validator: (input) => _priority == null
-                      //         ? 'Please select a priority level'
-                      //         : null,
-                      //     onChanged: (value) {
-                      //       setState(() {
-                      //         _priority = value;
-                      //       });
-                      //     },
-                      //     value: _priority,
-                      //   ),
-                      // ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 20.0),
-                        height: 60.0,
-                        width: double.infinity,
+                        // height: 60.0,
+                        // width: double.infinity,width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
+                          color:Colors.blue,
                           borderRadius: BorderRadius.circular(30.0),
                         ),
-                        
                         child: FlatButton(
                           child: Text(
                             'Add',
@@ -237,17 +197,12 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                               fontSize: 20.0,
                             ),
                           ),
-                          onPressed: _submit,
-                                                      
+                          onPressed: _submit,                        
                         ),
                       ),
-                      widget.task != null
-                          ? Container(
-                              margin: EdgeInsets.symmetric(vertical: 20.0),
-                              height: 60.0,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColor,
+                           Container(
+                               decoration: BoxDecoration(
+                                color: Colors.blue,
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
                               child: FlatButton(
@@ -261,7 +216,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                                 onPressed: _delete,
                               ),
                             )
-                          : SizedBox.shrink(),
                     ],
                   ),
                 ),
