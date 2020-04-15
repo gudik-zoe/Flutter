@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 class AddTaskScreen extends StatefulWidget {
   final Function updateTaskList;
-  final Task task;
+  final Valid task;
 
   AddTaskScreen({this.updateTaskList, this.task});
 
@@ -15,8 +15,8 @@ class AddTaskScreen extends StatefulWidget {
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _title = '';
-  String _priority;
+  String _email = '';
+  String _password;
   DateTime _date = DateTime.now();
   TextEditingController _dateController = TextEditingController();
 
@@ -28,9 +28,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     super.initState();
 
     if (widget.task != null) {
-      _title = widget.task.title;
+      _email = widget.task.email;
       _date = widget.task.date;
-      _priority = widget.task.priority;
+      _password = widget.task.password;
     }
 
     _dateController.text = _dateFormatter.format(_date);
@@ -66,17 +66,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   _submit() {
         if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print('$_title, $_date, $_priority');
+      print('$_email, $_date, $_password');
 
-      Task task = Task(title: _title, date: _date, priority: _priority);
+      Valid task = Valid(email: _email, date: _date, password: _password);
       if (widget.task == null) {
-        // Insert the task to our user's database
-        // task.status = 0;
         DatabaseHelper.instance.insertTask(task);
       } else {
-        // Update the task
         task.id = widget.task.id;
-        task.status = widget.task.status;
         DatabaseHelper.instance.updateTask(task);
       }
       widget.updateTaskList();
@@ -137,8 +133,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                               }
                             return null;
                                },
-                          onSaved: (input) => _title = input,
-                          initialValue: _title,
+                          onSaved: (input) => _email = input,
+                          initialValue: _email,
                         ),
                       ),
                        Padding(
@@ -161,8 +157,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                                 }
                                   return null;
                                 },
-                          onSaved: (input) => _priority = input,
-                          initialValue: _priority,
+                          onSaved: (input) => _password = input,
+                          initialValue: _password,
                         ),
                       ),
                       Padding(
@@ -183,8 +179,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 20.0),
-                        // height: 60.0,
-                        // width: double.infinity,width: double.infinity,
                         decoration: BoxDecoration(
                           color:Colors.blue,
                           borderRadius: BorderRadius.circular(30.0),

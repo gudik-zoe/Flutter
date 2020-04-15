@@ -10,7 +10,7 @@ class FormValidation extends StatefulWidget {
 }
 
 class _FormValidationState extends State<FormValidation> {
-  Future<List<Task>> _taskList;
+  Future<List<Valid>> _taskList;
   final DateFormat _dateFormatter = DateFormat('MMM dd, yyyy');
 
   @override
@@ -25,33 +25,17 @@ class _FormValidationState extends State<FormValidation> {
     });
   }
 
-  Widget _buildTask(Task task) {
+  Widget _buildTask(Valid task) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal:20.0),
       child: Column(
         children: <Widget>[
           ListTile(
             title: Text(
-              task.title,),
+              task.email,),
             subtitle: Text(
               'DateOfBirth: ${_dateFormatter.format(task.date)}' + '\n'+
-              'Password: ${task.priority}',
-              // style: TextStyle(
-              //   fontSize: 15.0,
-              //   decoration: task.status == 0
-              //       ? TextDecoration.none
-              //       : TextDecoration.lineThrough,
-              // ),
-            ),
-            // trailing: Checkbox(
-            //   onChanged: (value) {
-            //     task.status = value ? 1 : 0;
-            //     DatabaseHelper.instance.updateTask(task);
-            //     _updateTaskList();
-            //   },
-            //   activeColor: Theme.of(context).primaryColor,
-            //   value: task.status == 1 ? true : false,
-            // ),
+              'Password: ${task.password}'),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
@@ -91,12 +75,6 @@ class _FormValidationState extends State<FormValidation> {
               child: CircularProgressIndicator(),
             );
           }
-
-          // final int completedTaskCount = snapshot.data
-          //     .where((Task task) => task.status == 1)
-          //     .toList()
-          //     .length;
-
           return ListView.builder(
             // padding: EdgeInsets.symmetric(vertical: 10.0),
             itemCount: 1 + snapshot.data.length,

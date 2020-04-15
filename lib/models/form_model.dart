@@ -1,32 +1,30 @@
-class Task {
+class Valid {
   int id;
-  String title;
+  String email;
   DateTime date;
-  String priority;
-  int status; // 0 - Incomplete, 1 - Complete
+  String password;
 
-  Task({this.title, this.date, this.priority, this.status});
-  Task.withId({this.id, this.title, this.date, this.priority, this.status});
+
+  Valid({this.email, this.date, this.password});
+  Valid.withId({this.id, this.email, this.date, this.password});
 
   Map<String, dynamic> toMap() {
     final map = Map<String, dynamic>();
     if (id != null) {
       map['id'] = id;
     }
-    map['title'] = title;
+    map['title'] = email;
     map['date'] = date.toIso8601String();
-    map['priority'] = priority;
-    map['status'] = status;
+    map['priority'] = password;
     return map;
   }
 
-  factory Task.fromMap(Map<String, dynamic> map) {
-    return Task.withId(
+  factory Valid.fromMap(Map<String, dynamic> map) {
+    return Valid.withId(
       id: map['id'],
-      title: map['title'],
+      email: map['title'],
       date: DateTime.parse(map['date']),
-      priority: map['priority'],
-      status: map['status'],
+      password: map['priority'],
     );
   }
 }

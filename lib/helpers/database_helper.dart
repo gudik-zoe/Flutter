@@ -15,7 +15,6 @@ class DatabaseHelper {
   String colEmail = 'title';
   String colDate = 'date';
   String colPriority = 'priority';
-  String colStatus = 'status';
 
   Future<Database> get db async {
     if (_db == null) {
@@ -34,7 +33,7 @@ class DatabaseHelper {
 
   void _createDb(Database db, int version) async {
     await db.execute(
-      'CREATE TABLE $tasksTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colEmail TEXT, $colDate TEXT, $colPriority TEXT, $colStatus INTEGER)',
+      'CREATE TABLE $tasksTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colEmail TEXT, $colDate TEXT, $colPriority TEXT)',
     );
   }
 
@@ -44,23 +43,23 @@ class DatabaseHelper {
     return result;
   }
 
-  Future<List<Task>> getTaskList() async {
+  Future<List<Valid>> getTaskList() async {
     final List<Map<String, dynamic>> taskMapList = await getTaskMapList();
-    final List<Task> taskList = [];
+    final List<Valid> taskList = [];
     taskMapList.forEach((taskMap) {
-      taskList.add(Task.fromMap(taskMap));
+      taskList.add(Valid.fromMap(taskMap));
     });
     taskList.sort((taskA, taskB) => taskA.date.compareTo(taskB.date));
     return taskList;
   }
 
-  Future<int> insertTask(Task task) async {
+  Future<int> insertTask(Valid task) async {
     Database db = await this.db;
     final int result = await db.insert(tasksTable, task.toMap());
     return result;
   }
 
-  Future<int> updateTask(Task task) async {
+  Future<int> updateTask(Valid task) async {
     Database db = await this.db;
     final int result = await db.update(
       tasksTable,
