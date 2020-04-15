@@ -87,7 +87,7 @@ class _FormValidationState extends State<FormValidation> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'Users',
+                        'Users infos',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 40.0,
